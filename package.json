@@ -1,0 +1,23 @@
+{
+  "name": "crypto_bot",
+  "version": "1.0.0",
+  "description": "le bot de telegram pour recuperer les info liees au cryptomonaie",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon — exec babel-node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "toutpuissantged",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "coingecko-api": "^1.0.10",
+    "dotenv": "^10.0.0",
+    "node-telegram-bot-api": "^0.53.0",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "@types/coingecko-api": "^1.0.2",
+    "@types/node-telegram-bot-api": "^0.51.4"
+  }
+}
