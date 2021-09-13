@@ -5,7 +5,7 @@ const GetCurrentPrice  = (message,telegram) =>{
 
     const chatId = message.chat.id
     let isFound = false
-    telegramMessenger(telegram,chatId,'loading ...')
+    telegramMessenger(telegram,chatId,'loading ... please wait !!!')
     gekoFetch(message).then((res)=>{
       res.data.map((data,index)=>{
         if (data.id === message.text || data.symbol === message.text) {
