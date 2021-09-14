@@ -4,7 +4,8 @@
   "description": "le bot de telegram pour recuperer les info liees au cryptomonaie",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon — exec babel-node index.js",
+    "dev": "nodemon — exec babel-node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "toutpuissantged",
