@@ -14,6 +14,7 @@ let db = new sqlite3.Database('./data/dev.sqlite', (err) => {
 const getCurrentPrice  = require('./src/controllers/GetCurrentPrice')
 const WelcomeRoute = require('./src/controllers/welcome')
 const HelpRoute = require('./src/controllers/Help')
+const BigCacheSystemCmd = require('./src/admin/saveBigCache')
 
 const telegram = new TelegramBot(process.env.TELEGRAM_BOT_KEY, { polling: true }) 
 
@@ -22,13 +23,7 @@ telegram.on("text", (message) => {
   // console.log(message)
   TelegramRouter.Command('/start',WelcomeRoute)
   TelegramRouter.Command('/help',HelpRoute)
+  TelegramRouter.Command('/bigcache',BigCacheSystemCmd)
   TelegramRouter.DefaultLink(getCurrentPrice)
   
 })
-
-db.close((err) => {
-  if (err) {
-    console.error(err.message);
-  }
-  console.log('Close the database connection.');
-});
