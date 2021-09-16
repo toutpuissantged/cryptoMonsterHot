@@ -1,9 +1,11 @@
-const telegramMessenger = require('../helpers/telegramMessenger')
+import telegramMessenger from '../helpers/telegramMessenger'
+import Telegram,{Message} from 'node-telegram-bot-api/index'
+import {Database} from 'sqlite3/index'
 
-const Welcome  = (telegram,message,db)=>{
-    const telegramId = message.chat.id
+const Welcome  = (telegram:Telegram,message:Message,db:Database)=>{
+    const telegramId:number = message.chat.id
     console.log(message)
-    const welcomeMessage = `hi and welcome ${message.chat.username} , passionate about cryptomonics, so for me it is cryptomonster, in a world where information evolves at the speed of light i will help you to make as much gain as possible in time when money. so ready to get started? let's go`
+    const welcomeMessage :string= `hi and welcome ${message.chat.username} , passionate about cryptomonics, so for me it is cryptomonster, in a world where information evolves at the speed of light i will help you to make as much gain as possible in time when money. so ready to get started? let's go`
     telegramMessenger(telegram,message.chat.id,welcomeMessage)
     db.serialize(() => {
         const sql = `SELECT telegramId as id FROM user`
@@ -26,15 +28,14 @@ const Welcome  = (telegram,message,db)=>{
     });
 }
 
-const CreateUser = (telegram,message,db) =>{
+const CreateUser = (telegram:Telegram,message:Message,db:Database) =>{
     const sql = `INSERT INTO user(telegramId,createdTime) VALUES(?,?)`
     db.run(sql,[message.chat.id,new Date().getTime()], (err) => {
         if (err) {
           return console.log(err.message);
         }
-        // get the last insert id
-        console.log(`A row has been inserted with rowid ${this.lastID}`);
+        console.log('user created');
     });
 }
 
-module.exports = Welcome
+export default Welcome

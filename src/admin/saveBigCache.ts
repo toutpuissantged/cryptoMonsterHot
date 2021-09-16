@@ -1,14 +1,18 @@
-const telegramMessenger = require('../helpers/telegramMessenger')
-const gekoFetch = require('../helpers/coinGekoFech')
-const SaveCache = require('../core/saveCache')
+import telegramMessenger from '../helpers/telegramMessenger'
+import gekoFetch from '../helpers/coinGekoFech'
+import SaveCache from '../core/saveCache'
+import Telegram,{Message} from 'node-telegram-bot-api/index'
+import {Database} from 'sqlite3/index'
+import {fetchData} from '../types/index'
 
-const SaveBigCache  = (telegram,message,db) =>{
+const SaveBigCache  = (telegram:Telegram,message:Message,db:Database) =>{
     const chatId = message.chat.id
-    const text = message.text.toLowerCase()
+    const txt:string = JSON.parse(JSON.stringify(message.text))
+    const text:string = txt.toLowerCase()
     telegramMessenger(telegram,chatId,'the bigCache Systeme start ...')
     gekoFetch(message).then((res)=>{
       //console.log(res.data)
-      res.data.map((data,index)=>{
+      res.data.map((data:fetchData,index:number)=>{
         if(text==='/bigcache'){
             [data.id,data.symbol].map((name,index)=>{
                 message.text = name
@@ -29,4 +33,4 @@ const SaveBigCache  = (telegram,message,db) =>{
 }
 
 
-module.exports = SaveBigCache
+export default SaveBigCache

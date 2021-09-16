@@ -6,11 +6,15 @@
   "scripts": {
     "dev": "nodemon — exec babel-node index.js",
     "start": "node index.js",
+    "start:dev": "nodemon — exec babel-node ts-node ./src/index.ts",
+    "build": "rimraf ./build && tsc",
+    "compile": "ts-node ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "toutpuissantged",
   "license": "MIT",
   "dependencies": {
+    "@types/sqlite3": "^3.1.7",
     "axios": "^0.21.1",
     "coingecko-api": "^1.0.10",
     "dotenv": "^10.0.0",
@@ -18,6 +22,7 @@
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
     "@types/coingecko-api": "^1.0.2",
     "@types/node": "^16.9.1",
     "@types/node-telegram-bot-api": "^0.51.4",
@@ -25,6 +30,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.12",
     "prettier": "2.4.1",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   }

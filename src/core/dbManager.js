@@ -1,6 +1,0 @@
-
-class DbManager {
-    constructor(db){
-        
-    }
-}
