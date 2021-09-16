@@ -22,8 +22,8 @@ const SaveBigCache  = (telegram:Telegram,message:Message,db:Database) =>{
         if((index+1)===res.data.length){
             telegramMessenger(telegram,chatId,'the bigCache Systeme is successfully update database')
         }
-      }) 
-    }) 
+      })
+    })
     .catch((err)=>{
 
     })

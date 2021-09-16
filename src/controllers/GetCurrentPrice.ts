@@ -28,7 +28,7 @@ const GetCurrentPrice  = (telegram:Telegram,message:Message,db:Database) =>{
       if(!isFound){
         telegramMessenger(telegram,chatId,'this crypto is not found !!!')
       }
-    }) 
+    })
     .catch((err:any)=>{
 
     })

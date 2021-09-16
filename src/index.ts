@@ -30,7 +30,7 @@ const KeyValidation = () =>{
 
 const KEY:string|undefined = KeyValidation()
 const KEY_str:string = JSON.parse(JSON.stringify(KEY))
-const telegram = new TelegramBot(KEY_str, { polling: true }) 
+const telegram = new TelegramBot(KEY_str, { polling: true })
 
 telegram.on("text", (message:any) => {
   const TelegramRouter = new Router(telegram,message,db)
