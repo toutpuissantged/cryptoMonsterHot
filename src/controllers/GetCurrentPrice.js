@@ -1,7 +1,7 @@
 const telegramMessenger = require('../helpers/telegramMessenger')
 const gekoFetch = require('../helpers/coinGekoFech')
-const os  = require('os')
 const SaveCache = require('../core/saveCache')
+const isProd = require('../config/isProd')
 
 const GetCurrentPrice  = (telegram,message,db) =>{
     const chatId = message.chat.id
@@ -40,12 +40,9 @@ const InfoSend = (telegram,message,data) =>{
 }
 
 const Main = (telegram,message,db) =>{
-    const my_os = os.type()
-    const DEV_OS = 'Windows_NT'
-    console.log(my_os)
     const Loading = 'loading ...  please wait !!!'
     telegramMessenger(telegram,message.chat.id,Loading)
-    if(my_os===DEV_OS){
+    if(!isProd()){
       GetCurrentPrice(telegram,message,db)
     }
     else {
