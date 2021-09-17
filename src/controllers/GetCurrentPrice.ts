@@ -12,7 +12,10 @@ interface res {
 
 const GetCurrentPrice  = (telegram:Telegram,message:Message,db:Database) =>{
   /**
-   * traite les donnees du cryptomonaie 
+  * traite les donnees du cryptomonaie 
+  * @param telegram @type {Telegram} instance de telegram-bot initialisee
+  * @param message @type {Message} objet message renvoyee par l'api telegram
+  * @param db @type {Database} instance de la base de donnee creer 
    */
     const chatId:number = message.chat.id
     let isFound:boolean = false

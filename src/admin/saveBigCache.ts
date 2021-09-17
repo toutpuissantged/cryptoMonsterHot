@@ -7,8 +7,11 @@ import {fetchData} from '../types/index'
 
 const SaveBigCache  = (telegram:Telegram,message:Message,db:Database) =>{
   /**
-   * sauvegarde du cache dans la base de donnee
-   */
+    * sauvegarde du cache dans la base de donnee
+    * @param telegram @type {Telegram} instance de telegram-bot initialisee
+    * @param message @type {Message} objet message renvoyee par l'api telegram
+    * @param db @type {Database} instance de la base de donnee creer 
+  */
     const chatId = message.chat.id
     const txt:string = JSON.parse(JSON.stringify(message.text))
     const text:string = txt.toLowerCase()

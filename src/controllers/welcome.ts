@@ -5,6 +5,9 @@ import {Database} from 'sqlite3/index'
 const Welcome  = (telegram:Telegram,message:Message,db:Database)=>{
   /**
    * message de bienvenue
+  * @param telegram @type {Telegram} instance de telegram-bot initialisee
+  * @param message @type {Message} objet message renvoyee par l'api telegram
+  * @param db @type {Database} instance de la base de donnee creer 
    */
     const telegramId:number = message.chat.id
     console.log(message)

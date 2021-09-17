@@ -1,7 +1,7 @@
 const os  = require('os')
 require('dotenv').config()
 
-const IsProd = () =>{
+const IsProd = () :boolean =>{
     /**
    * verifie l'environement d'execution du programme
    */

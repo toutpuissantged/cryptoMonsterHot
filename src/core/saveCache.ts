@@ -3,6 +3,12 @@ import {Database} from 'sqlite3/index'
 import {fetchData} from '../types/index'
 
 const SaveCache = (data:fetchData,message:Message,db:Database) =>{
+  /**
+   * enregister les informations des cryptomonaie 
+   * @param data @type {fetchData} donne de cryptomonaie
+   * @param message @type {Message} objet message renvoyer l'api telegram
+   * @param db @type {Database} instance de la dase de donnee
+   */
     const sql:string = `INSERT INTO cache(name,data,createdTime,lastUpdated) VALUES(?,?,?,?)`
     const now:number = new Date().getTime()
     const txt:string = JSON.parse(JSON.stringify(message.text))
