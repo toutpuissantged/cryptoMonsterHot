@@ -11,6 +11,9 @@ interface res {
 }
 
 const GetCurrentPrice  = (telegram:Telegram,message:Message,db:Database) =>{
+  /**
+   * traite les donnees du cryptomonaie 
+   */
     const chatId:number = message.chat.id
     let isFound:boolean = false
     const txt:string = JSON.parse(JSON.stringify(message.text))
@@ -38,6 +41,9 @@ const GetCurrentPrice  = (telegram:Telegram,message:Message,db:Database) =>{
 }
 
 const InfoSend = (telegram:Telegram,message:Message,data:fetchData) =>{
+  /**
+   * envoye le prix de la cryptomonaie comme message telegram
+   */
   const usd_price:number  = data.market_data.current_price.usd
   const chatId:number = message.chat.id
   const txt:string = JSON.parse(JSON.stringify(message.text))
@@ -48,18 +54,10 @@ const InfoSend = (telegram:Telegram,message:Message,data:fetchData) =>{
   telegram.sendPhoto(chatId, image)
 }
 
-const Main = (telegram:Telegram,message:Message,db:Database) =>{
-    const Loading:string = 'loading ...  please wait !!!'
-    telegramMessenger(telegram,message.chat.id,Loading)
-    if(!isProd()){
-      GetCurrentPrice(telegram,message,db)
-    }
-    else {
-      LoadCache(telegram,message,db)
-    }
-}
-
 const LoadCache = (telegram:Telegram,message:Message,db:Database) =>{
+  /**
+   * charge le cache depuis la base de donnee
+   */
   const txt:string = JSON.parse(JSON.stringify(message.text))
   const text:string = txt.toLowerCase()
 
@@ -79,6 +77,17 @@ const LoadCache = (telegram:Telegram,message:Message,db:Database) =>{
       console.log('name is found in db',row[0])
     }
   })
+}
+
+const Main = (telegram:Telegram,message:Message,db:Database) =>{
+  const Loading:string = 'loading ...  please wait !!!'
+  telegramMessenger(telegram,message.chat.id,Loading)
+  if(!isProd()){
+    GetCurrentPrice(telegram,message,db)
+  }
+  else {
+    LoadCache(telegram,message,db)
+  }
 }
 
 export default Main

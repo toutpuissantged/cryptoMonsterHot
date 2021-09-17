@@ -3,6 +3,9 @@ import Telegram,{Message} from 'node-telegram-bot-api/index'
 import {Database} from 'sqlite3/index'
 
 const Welcome  = (telegram:Telegram,message:Message,db:Database)=>{
+  /**
+   * message de bienvenue
+   */
     const telegramId:number = message.chat.id
     console.log(message)
     const welcomeMessage :string= `hi and welcome ${message.chat.username} , passionate about cryptomonics, so for me it is cryptomonster, in a world where information evolves at the speed of light i will help you to make as much gain as possible in time when money. so ready to get started? let's go`
@@ -29,6 +32,9 @@ const Welcome  = (telegram:Telegram,message:Message,db:Database)=>{
 }
 
 const CreateUser = (telegram:Telegram,message:Message,db:Database) =>{
+  /**
+   * creer une nouvel utilisateur dans la base de donnee
+   */
     const sql = `INSERT INTO user(telegramId,createdTime) VALUES(?,?)`
     db.run(sql,[message.chat.id,new Date().getTime()], (err) => {
         if (err) {

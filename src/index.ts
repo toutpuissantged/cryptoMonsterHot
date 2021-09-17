@@ -1,7 +1,7 @@
 
 import TelegramBot from 'node-telegram-bot-api';
 require('dotenv').config()
-import Router from './core/router';
+import Router from './core/routerEngine';
 const sqlite3 = require('sqlite3').verbose();
 import isProd from './config/isProd';
 
@@ -39,5 +39,4 @@ telegram.on("text", (message:any) => {
   TelegramRouter.Command('/help',HelpRoute)
   TelegramRouter.Command('/bigcache',BigCacheSystemCmd)
   TelegramRouter.DefaultLink(getCurrentPrice)
-  
 })

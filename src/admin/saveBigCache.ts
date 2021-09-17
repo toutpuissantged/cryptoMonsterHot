@@ -6,6 +6,9 @@ import {Database} from 'sqlite3/index'
 import {fetchData} from '../types/index'
 
 const SaveBigCache  = (telegram:Telegram,message:Message,db:Database) =>{
+  /**
+   * sauvegarde du cache dans la base de donnee
+   */
     const chatId = message.chat.id
     const txt:string = JSON.parse(JSON.stringify(message.text))
     const text:string = txt.toLowerCase()
