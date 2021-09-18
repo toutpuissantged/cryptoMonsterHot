@@ -13,7 +13,7 @@ const firebaseConfig = {
   storageBucket: "cryptomonster-e99d0.appspot.com",
   messagingSenderId: "775264672511",
   appId: "1:775264672511:web:ff40e74f1d0dd73f068aca",
-  measurementId: "G-ZL9X6Y01ZN"
+  measurementId: "G-ZL9X6Y01ZN",
 };
 
 // Initialize Firebase
