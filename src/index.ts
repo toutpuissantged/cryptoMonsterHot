@@ -17,7 +17,7 @@ const db = new sqlite3.Database('../data/dev.sqlite', (err:any) => {
   console.log('Connected to the in-memory SQlite database.')
 })
 const KEY:string = JSON.parse(JSON.stringify(isProd()?process.env.TELEGRAM_BOT_KEY:process.env.TELEGRAM_BOT_KEY_DEV))
-const telegram = new TelegramBot(KEY, { polling: true }) 
+const telegram = new TelegramBot(KEY, { polling: true })
 
 telegram.on("text", (message:any) => {
   const TelegramRouter = new Router(telegram,message,db)
