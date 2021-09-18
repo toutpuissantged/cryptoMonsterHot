@@ -12,7 +12,7 @@ const Routes = (telegram:Telegram,message:Message,db:Database) =>{
   * enregistre tout les routes de l'application
   * @param telegram @type {Telegram} instance de telegram-bot initialisee
   * @param message @type {Message} objet message renvoyee par l'api telegram
-  * @param db @type {Database} instance de la base de donnee creer 
+  * @param db @type {Database} instance de la base de donnee creer
    */
     const TelegramRouter = new Router(telegram,message,db)
     TelegramRouter.Command('/start',WelcomeRoute)
