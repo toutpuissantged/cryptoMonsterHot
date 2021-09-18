@@ -10,10 +10,10 @@ interface Router {
 
 class Router{
     /**
-     * permet de generer aisement les routes 
+     * permet de generer aisement les routes
      * @param telegram @type {Telegram} instance de telegram-bot initialisee
      * @param message @type {Message} objet message renvoyee par l'api telegram
-     * @param db @type {Database} instance de la base de donnee creer 
+     * @param db @type {Database} instance de la base de donnee creer
      */
     constructor(telegram:any,message:Message,db:Database){
         this.telegram = telegram
@@ -57,7 +57,7 @@ class Router{
     DefaultLink(callback:any){
         /**
          * executes une action si aucun des routes percedentes n'est validee
-         * @param callback @type {any} function a executer 
+         * @param callback @type {any} function a executer
          */
         if(this.routeVerified) return 0
         console.log('DefaultLink is called')
